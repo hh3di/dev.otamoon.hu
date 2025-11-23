@@ -1,6 +1,5 @@
 import axios from 'axios';
 import type { AxiosInstance, AxiosResponse, AxiosError } from 'axios';
-import { memoryCache } from 'cache/cache.server';
 
 // Cache Service TypeScript interfaces
 interface CacheConfig {
@@ -153,52 +152,37 @@ class CacheService {
     if (this.pendingRequests.has(key)) {
       return this.pendingRequests.get(key);
     }
+    const requestPromise = (async () => {
+      try {
+        const response: AxiosResponse<T> = await this.axiosInstance.get('/cache', {
+          params: { key },
+        });
 
-    let cacheType: 'local' | 'remote' = 'remote';
-    if (
-      !process.env.CACHE_SERVICE_API_KEY ||
-      process.env.CACHE_SERVICE_API_KEY === '' ||
-      !process.env.CACHE_SERVICE_URL ||
-      process.env.CACHE_SERVICE_URL === ''
-    ) {
-      cacheType = 'local';
-    }
-    if (cacheType === 'local') {
-      const localData = await memoryCache.get(key);
-      return localData || null;
-    } else {
-      const requestPromise = (async () => {
-        try {
-          const response: AxiosResponse<T> = await this.axiosInstance.get('/cache', {
-            params: { key },
-          });
+        const data = response.data;
 
-          const data = response.data;
+        // Store in local cache
+        this.localCache.set(key, { data, timestamp: Date.now() });
 
-          // Store in local cache
-          this.localCache.set(key, { data, timestamp: Date.now() });
+        return data;
+      } catch (error: any) {
+        const cacheError = this.handleError(error);
 
-          return data;
-        } catch (error: any) {
-          const cacheError = this.handleError(error);
-
-          // If cache miss (404), store null in local cache to prevent repeated requests
-          if (cacheError.status === 404) {
-            this.localCache.set(key, { data: null, timestamp: Date.now() });
-            return null;
-          }
-
-          // For other errors, throw the error
-          throw cacheError;
-        } finally {
-          // Clean up pending request
-          this.pendingRequests.delete(key);
+        // If cache miss (404), store null in local cache to prevent repeated requests
+        if (cacheError.status === 404) {
+          this.localCache.set(key, { data: null, timestamp: Date.now() });
+          return null;
         }
-      })();
 
-      this.pendingRequests.set(key, requestPromise);
-      return requestPromise;
-    }
+        // For other errors, throw the error
+        throw cacheError;
+      } finally {
+        // Clean up pending request
+        this.pendingRequests.delete(key);
+      }
+    })();
+
+    this.pendingRequests.set(key, requestPromise);
+    return requestPromise;
   }
 
   /**
@@ -216,40 +200,26 @@ class CacheService {
     if (data === undefined) {
       throw new Error('Cache data is required');
     }
-    let cacheType: 'local' | 'remote' = 'remote';
-    if (
-      !process.env.CACHE_SERVICE_API_KEY ||
-      process.env.CACHE_SERVICE_API_KEY === '' ||
-      !process.env.CACHE_SERVICE_URL ||
-      process.env.CACHE_SERVICE_URL === ''
-    ) {
-      cacheType = 'local';
-    }
-    if (cacheType === 'local') {
-      await memoryCache.set(key, data);
-      return { message: 'Cached successfully' };
-    } else {
-      try {
-        const requestBody: { data: T; ttl?: number } = { data };
+    try {
+      const requestBody: { data: T; ttl?: number } = { data };
 
-        if (options.ttl !== undefined) {
-          requestBody.ttl = options.ttl;
-        }
-
-        const response: AxiosResponse<{ message: string }> = await this.axiosInstance.post('/cache', requestBody, {
-          params: { key },
-        });
-
-        // Update local cache
-        this.localCache.set(key, { data, timestamp: Date.now() });
-
-        // Clear any pending requests for this key
-        this.pendingRequests.delete(key);
-
-        return response.data;
-      } catch (error: any) {
-        throw this.handleError(error);
+      if (options.ttl !== undefined) {
+        requestBody.ttl = options.ttl;
       }
+
+      const response: AxiosResponse<{ message: string }> = await this.axiosInstance.post('/cache', requestBody, {
+        params: { key },
+      });
+
+      // Update local cache
+      this.localCache.set(key, { data, timestamp: Date.now() });
+
+      // Clear any pending requests for this key
+      this.pendingRequests.delete(key);
+
+      return response.data;
+    } catch (error: any) {
+      throw this.handleError(error);
     }
   }
 
@@ -262,32 +232,18 @@ class CacheService {
     if (!key) {
       throw new Error('Cache key is required');
     }
-    let cacheType: 'local' | 'remote' = 'remote';
-    if (
-      !process.env.CACHE_SERVICE_API_KEY ||
-      process.env.CACHE_SERVICE_API_KEY === '' ||
-      !process.env.CACHE_SERVICE_URL ||
-      process.env.CACHE_SERVICE_URL === ''
-    ) {
-      cacheType = 'local';
-    }
-    if (cacheType === 'local') {
-      await memoryCache.delete(key);
-      return { message: 'Deleted successfully' };
-    } else {
-      try {
-        const response: AxiosResponse<{ message: string }> = await this.axiosInstance.delete('/cache', {
-          params: { key },
-        });
+    try {
+      const response: AxiosResponse<{ message: string }> = await this.axiosInstance.delete('/cache', {
+        params: { key },
+      });
 
-        // Clear from local cache and pending requests
-        this.localCache.delete(key);
-        this.pendingRequests.delete(key);
+      // Clear from local cache and pending requests
+      this.localCache.delete(key);
+      this.pendingRequests.delete(key);
 
-        return response.data;
-      } catch (error: any) {
-        throw this.handleError(error);
-      }
+      return response.data;
+    } catch (error: any) {
+      throw this.handleError(error);
     }
   }
 

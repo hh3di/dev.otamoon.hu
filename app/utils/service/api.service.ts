@@ -32,7 +32,6 @@ interface ApiError {
 // Default configuration
 const DEFAULT_CONFIG: ApiConfig = {
   baseURL: process.env.API_HOST as string,
-  timeout: 2000,
   retries: 1,
 };
 

@@ -1,5 +1,5 @@
 const config = {
-  TITLE: 'React Router Flutry Fork',
+  TITLE: 'Szegedi Dániel',
   API_HOST: '',
 };
 

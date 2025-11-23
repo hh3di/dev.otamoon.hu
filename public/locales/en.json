@@ -36,5 +36,104 @@
       "redirectPath": "/",
       "buttonText": "Home"
     }
+  },
+  "nav": {
+    "about": "About Me",
+    "projects": "Projects",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "languageChangedSuccessfully": "Language changed successfully to English.",
+  "hero": {
+    "greeting": "Hi, I'm Dani",
+    "role": "Fullstack Web Developer",
+    "experience": "Building robust web applications since 2017",
+    "cta": "View My Work",
+    "contact": "Get In Touch"
+  },
+  "about": {
+    "title": "About Me",
+    "description": "I'm a fullstack developer with 8 years of experience creating scalable and secure web applications. I focus on clean code, thoughtful system design, and performance optimization. I build software that not only works today but remains maintainable and adaptable for the long term.",
+    "focus": "Focus Areas",
+    "cleanCode": "Clean Code",
+    "cleanCodeDesc": "Writing maintainable, readable code that stands the test of time",
+    "systemDesign": "System Design",
+    "systemDesignDesc": "Designing scalable solutions with thoughtful patterns",
+    "security": "Security",
+    "securityDesc": "Applying security principles from the ground up",
+    "performance": "Performance",
+    "performanceDesc": "Optimizing speed and efficiency at every layer"
+  },
+  "skills": {
+    "title": "Technical Skills",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "database": "Database & ORM",
+    "devops": "DevOps & Tools",
+    "other": "Other Technologies",
+    "experienceYears": "years",
+    "experienceDescription": "of experience building production-ready applications",
+    "levelDescription": "Medior/Senior level developer with a passion for excellence"
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "viewDemo": "Live Demo",
+    "viewCode": "View Code",
+    "personalProject": "Personal Project",
+    "moreProjects": "More projects and open-source contributions available on request",
+    "keyHighlights": "Key Highlights",
+    "flutry": {
+      "title": "Flutry REST API",
+      "description": "A comprehensive REST API system built from scratch with scalability and security in mind. This project demonstrates modern API architecture patterns, efficient data handling, and robust authentication mechanisms. The system handles high-volume requests with low latency while maintaining industry-standard security practices.",
+      "highlights": ["Custom Architecture", "Scalable Design Patterns", "Security-First Approach", "Optimized Performance"]
+    },
+    "dev": {
+      "title": "dev.otamoon.hu - Portfolio",
+      "description": "My personal portfolio website built entirely with custom-developed technologies. Features modern React Router V7 for optimal navigation, responsive design with Tailwind CSS, and custom email service integration for the contact form. This project showcases my full-stack development skills and commitment to quality code.",
+      "highlights": [
+        "Personal portfolio and showcase",
+        "React Router V7 and Tailwind CSS",
+        "Custom email service integration",
+        "Multi-language support (HU/EN)"
+      ]
+    }
+  },
+  "contact": {
+    "title": "Let's Work Together",
+    "description": "I'm always interested in new projects and opportunities. Whether you have a question or just want to say hi, feel free to reach out.",
+    "name": "Your Name",
+    "email": "Your Email",
+    "message": "Your Message",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "messageSentSuccessfully": "Message sent successfully! I'll get back to you soon.",
+    "messageSendError": "Failed to send message. Please try again.",
+    "newMessage": "New Message",
+    "emailSubject": "Contact Form Message",
+    "emailSentAt": "Sent at",
+    "fromWebsite": "From website",
+    "charactersLeft": "characters remaining",
+    "required": "This field is required",
+    "error": {
+      "name": {
+        "required": "This field is required",
+        "minLength": "Please enter at least 2 characters",
+        "maxLength": "Maximum 100 characters allowed"
+      },
+      "email": {
+        "required": "This field is required",
+        "emailInvalid": "Please enter a valid email address",
+        "maxLength": "Maximum 255 characters allowed"
+      },
+      "message": {
+        "required": "This field is required",
+        "minLength": "Please enter at least 10 characters",
+        "maxLength": "Maximum 2000 characters allowed"
+      }
+    }
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "built": "Built with React, TypeScript, and Tailwind CSS"
   }
 }

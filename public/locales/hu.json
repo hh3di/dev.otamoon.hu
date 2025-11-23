@@ -36,5 +36,101 @@
       "redirectPath": "/",
       "buttonText": "Főoldal"
     }
+  },
+  "nav": {
+    "about": "Rólam",
+    "projects": "Projektek",
+    "skills": "Készségek",
+    "contact": "Kapcsolat"
+  },
+  "languageChangedSuccessfully": "A nyelv sikeresen megváltozott erre: Magyar.",
+  "hero": {
+    "greeting": "Szia, Dani vagyok",
+    "role": "Fullstack Webfejlesztő",
+    "experience": "Robusztus webalkalmazásokat építek 2017 óta",
+    "cta": "Munkáim megtekintése",
+    "contact": "Kapcsolatfelvétel"
+  },
+  "about": {
+    "title": "Rólam",
+    "description": "8 éves tapasztalattal rendelkező fullstack fejlesztő vagyok, aki skálázható és biztonságos webalkalmazásokat készít. A munkámban a tiszta kódra, az átgondolt rendszertervezésre és a teljesítmény-optimalizálásra helyezem a hangsúlyt. Olyan szoftvereket készítek, amelyek nemcsak ma működnek, hanem hosszú távon is karbantarthatók és adaptálhatók.",
+    "focus": "Fókuszterületek",
+    "cleanCode": "Tiszta kód",
+    "cleanCodeDesc": "Karbantartható, olvasható kód írása, amely kiállja az idő próbáját",
+    "systemDesign": "Rendszertervezés",
+    "systemDesignDesc": "Skálázható megoldások tervezése átgondolt mintákkal",
+    "security": "Biztonság",
+    "securityDesc": "Biztonsági alapelvek alkalmazása az alapoktól kezdve",
+    "performance": "Teljesítmény",
+    "performanceDesc": "Sebesség és hatékonyság optimalizálása minden rétegben"
+  },
+  "skills": {
+    "title": "Technikai készségek",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "database": "Adatbázis & ORM",
+    "devops": "DevOps & Eszközök",
+    "other": "További technológiák",
+    "experienceYears": "év",
+    "experienceDescription": "tapasztalat production-ready alkalmazások fejlesztésében",
+    "levelDescription": "Medior/Senior szintű fejlesztő, aki a kiválóság iránt elkötelezett"
+  },
+  "projects": {
+    "title": "Kiemelt projektek",
+    "viewDemo": "ÉlőDemo",
+    "viewCode": "Kód megtekintése",
+    "personalProject": "Saját projekt",
+    "moreProjects": "További projektek és nyílt forráskódú közreműködések kérésre elérhetők",
+    "keyHighlights": "Főbb jellemzők",
+    "flutry": {
+      "title": "Flutry REST API",
+      "description": "Egy átfogó REST API rendszer, amelyet a semmiből építettem fel, skálázhatóságra és biztonságra tervezve. Ez a projekt modern API architektúra mintákat, hatékony adatkezelést és robusztus autentikációs mechanizmusokat mutat be. A rendszer nagy volumenű kéréseket kezel alacsony késleltetéssel, miközben iparági szabványnak megfelelő biztonsági gyakorlatokat alkalmaz.",
+      "highlights": ["Egyedi architektúra", "Skálázható tervezési minták", "Biztonság-központú megközelítés", "Optimalizált teljesítmény"]
+    },
+    "dev": {
+      "title": "dev.otamoon.hu - Portfolió",
+      "description": "Az én személyes portfolió oldalam, amelyet teljes egészében saját fejlesztésű technológiákkal építettem fel. Modern React Router V7-et használ optimális navigációhoz, Tailwind CSS-sel készült reszponzív dizájnnal és saját email szolgáltatással a kapcsolatfelvételi űrlaphoz. Ez a projekt demonstrálja a teljes fejlesztési készségeimet és elkötelezettségemet a minőségi kód iránt.",
+      "highlights": [
+        "Személyes portfolió és bemutatkozás",
+        "React Router V7 és Tailwind CSS",
+        "Saját email szolgáltatás integráció",
+        "Többnyelvű támogatás (HU/EN)"
+      ]
+    }
+  },
+  "contact": {
+    "title": "Dolgozzunk együtt",
+    "description": "Mindig érdekelnek az új projektek és lehetőségek. Akár kérdésed van, akár csak köszönni szeretnél, nyugodtan keress.",
+    "name": "Neved",
+    "email": "Email címed",
+    "message": "Üzeneted",
+    "send": "Üzenet küldése",
+    "messageSentSuccessfully": "Az üzeneted sikeresen elküldve! Hamarosan válaszolok.",
+    "messageSendError": "Az üzenet küldése sikertelen. Kérjük, próbálja újra.",
+    "newMessage": "Új üzenet",
+    "emailSubject": "Kapcsolatfelvételi űrlap üzenet",
+    "emailSentAt": "Küldve",
+    "fromWebsite": "Weboldalról",
+    "error": {
+      "name": {
+        "required": "Ez a mező kötelező",
+        "minLength": "Kérjük, adjon meg legalább 2 karaktert",
+        "maxLength": "Legfeljebb 50 karakter megengedett"
+      },
+      "email": {
+        "required": "Ez a mező kötelező",
+        "emailInvalid": "Kérjük, érvényes email címet adjon meg",
+        "maxLength": "Legfeljebb 100 karakter megengedett"
+      },
+      "message": {
+        "required": "Ez a mező kötelező",
+        "minLength": "Kérjük, adjon meg legalább 10 karaktert",
+        "maxLength": "Legfeljebb 2000 karakter megengedett"
+      }
+    }
+  },
+  "footer": {
+    "rights": "Minden jog fenntartva.",
+    "built": "React, TypeScript és Tailwind CSS használatával készült"
   }
 }
