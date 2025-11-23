@@ -1,0 +1,40 @@
+{
+  "welcome": "Üdvözöljük a(z) {{appName}} alkalmazásban",
+  "errors": {
+    "default": {
+      "title": "Hiba történt",
+      "message": "Valami hiba történt, kérjük, próbálja meg később újra.",
+      "suggestion": "Ha a probléma továbbra is fennáll, vegye fel a kapcsolatot az ügyfélszolgálattal.",
+      "redirectPath": "/",
+      "buttonText": "Főoldal"
+    },
+    "unknown": {
+      "title": "Ismeretlen hiba",
+      "message": "Ismeretlen hiba történt. Kérjük, próbálja meg később újra.",
+      "suggestion": "Ha a probléma továbbra is fennáll, vegye fel a kapcsolatot az ügyfélszolgálattal.",
+      "redirectPath": "/",
+      "buttonText": "Főoldal"
+    },
+    "not_found": {
+      "title": "Az oldal nem található",
+      "message": "A keresett oldal nem található.",
+      "suggestion": "Ellenőrizze az URL-t vagy töltse újra az oldalt.",
+      "redirectPath": "/",
+      "buttonText": "Főoldal"
+    },
+    "server_unavailable": {
+      "title": "A szerver nem elérhető",
+      "message": "A szerver jelenleg nem elérhető. Kérjük, próbálja meg később újra.",
+      "suggestion": "Ha a probléma továbbra is fennáll, vegye fel a kapcsolatot az ügyfélszolgálattal.",
+      "redirectPath": "/",
+      "buttonText": "Főoldal"
+    },
+    "rate_limited": {
+      "title": "Túl sok kérés",
+      "message": "Rövid időn belül túl sok kérést küldött.",
+      "suggestion": "Kérjük, várjon egy kicsit, mielőtt újra próbálkozik. ({{retry_after}} másodperc)",
+      "redirectPath": "/",
+      "buttonText": "Főoldal"
+    }
+  }
+}

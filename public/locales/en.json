@@ -1,0 +1,40 @@
+{
+  "welcome": "Welcome to {{appName}}",
+  "errors": {
+    "default": {
+      "title": "An error occurred",
+      "message": "Something went wrong, please try again later.",
+      "suggestion": "If the problem persists, contact support.",
+      "redirectPath": "/",
+      "buttonText": "Home"
+    },
+    "unknown": {
+      "title": "Unknown error",
+      "message": "An unknown error occurred. Please try again later.",
+      "suggestion": "If the problem persists, contact customer support.",
+      "redirectPath": "/",
+      "buttonText": "Home"
+    },
+    "not_found": {
+      "title": "Page not found",
+      "message": "The page you are looking for cannot be found.",
+      "suggestion": "Check the URL or reload the page.",
+      "redirectPath": "/",
+      "buttonText": "Home"
+    },
+    "server_unavailable": {
+      "title": "Server unavailable",
+      "message": "The server is currently unavailable. Please try again later.",
+      "suggestion": "If the problem persists, contact support.",
+      "redirectPath": "/",
+      "buttonText": "Home"
+    },
+    "rate_limited": {
+      "title": "Too many requests",
+      "message": "You have sent too many requests in a short period.",
+      "suggestion": "Please wait a moment before trying again. ({{retry_after}} seconds)",
+      "redirectPath": "/",
+      "buttonText": "Home"
+    }
+  }
+}
