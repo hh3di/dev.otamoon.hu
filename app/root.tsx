@@ -44,10 +44,13 @@ export const links: LinksFunction = () => [
   { rel: 'dns-prefetch', href: 'https://fonts.gstatic.com' },
 
   // Favicon and touch icons
-  { rel: 'icon', type: 'image/x-icon', href: '/icon.ico' },
-  { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/32x32.png' },
-  { rel: 'icon', type: 'image/png', sizes: '128x128', href: '/128x128.png' },
-  { rel: 'apple-touch-icon', sizes: '76x76', href: '/ios/AppIcon-76x76@2x.png' },
+  { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+  { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+  { rel: 'icon', type: 'image/png', sizes: '96x96', href: '/favicon-96x96.png' },
+  { rel: 'icon', type: 'image/png', sizes: '192x192', href: '/web-app-manifest-192x192.png' },
+  { rel: 'icon', type: 'image/png', sizes: '512x512', href: '/web-app-manifest-512x512.png' },
+  { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+  { rel: 'manifest', href: '/site.webmanifest' },
 ];
 
 export const meta: MetaFunction = ({ matches }) => {
