@@ -14,7 +14,6 @@ import {
 } from 'react-router';
 import './app.css';
 import { setMeta } from './utils/service/meta.service';
-import config from 'config';
 import { isbot } from 'isbot';
 import { getLanguage } from './utils/i18n/i18n';
 import { popToast } from './utils/service/session.service';
@@ -25,6 +24,7 @@ import { ToastProvider } from './components/provider/Toast.Provider';
 import { AnimatePresence } from 'motion/react';
 import Spinner from './components/common/Spinner';
 import { LuTriangleAlert } from 'react-icons/lu';
+import createI18nInstance from './utils/i18n/i18next.server';
 
 export const links: LinksFunction = () => [
   // Preconnect for performance
@@ -52,10 +52,41 @@ export const links: LinksFunction = () => [
 ];
 
 export const meta: MetaFunction = ({ matches }) => {
+  const rootData = matches.find((m) => m.id === 'root')?.data as {
+    locale: string;
+    metaTexts: {
+      title: string;
+      description: string;
+      keywords: string;
+      ogTitle: string;
+      ogDescription: string;
+      aiSummary: string;
+    };
+  };
+
+  const t = (key: keyof typeof rootData.metaTexts) => rootData.metaTexts[key];
+
   const metaTags = [
-    // Default Meta
-    { name: 'title', content: config.TITLE },
-    { name: 'description', content: `Welcome to ${config.TITLE}` },
+    { name: 'title', content: t('title') },
+    { name: 'description', content: t('description') },
+    { name: 'keywords', content: t('keywords') },
+    { name: 'author', content: 'Szegedi Dani' },
+    { name: 'robots', content: 'index, follow, max-snippet:-1, max-image-preview:large' },
+    { rel: 'canonical', href: 'https://dev.otamoon.hu' },
+    { property: 'og:title', content: t('ogTitle') },
+    { property: 'og:description', content: t('ogDescription') },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:locale', content: rootData.locale === 'hu' ? 'hu_HU' : 'en_US' },
+    { property: 'og:url', content: 'https://dev.otamoon.hu' },
+    { property: 'og:image', content: 'https://dev.otamoon.hu/og-image.png' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: t('ogTitle') },
+    { name: 'twitter:description', content: t('ogDescription') },
+    { name: 'ai-summary', content: t('aiSummary') },
+    { name: 'ai-keywords', content: t('keywords') },
+    { name: 'ai-language', content: rootData.locale },
+    { itemProp: 'name', content: t('title') },
+    { itemProp: 'description', content: t('description') },
   ];
 
   return setMeta(matches, metaTags);
@@ -68,27 +99,31 @@ export const loader: LoaderFunction = async ({ request, context }) => {
   const { locale, localeCookie } = getLanguage(request);
   const { toastData, destroySession } = await popToast(request);
   const response = await AuthLoader(request, [destroySession, localeCookie]);
+
+  const { t } = await createI18nInstance(locale);
+  const metaTexts = {
+    title: t('meta.title'),
+    description: t('meta.description'),
+    keywords: t('meta.keywords'),
+    ogTitle: t('meta.ogTitle'),
+    ogDescription: t('meta.ogDescription'),
+    aiSummary: t('meta.aiSummary'),
+  };
+
+  const dataObj = {
+    toastData,
+    isbot: botDetected,
+    locale,
+    user: response.user || null,
+    metaTexts,
+  };
+
   if (response.headers) {
     context.root = true;
-    return data(
-      {
-        toastData,
-        isbot: botDetected,
-        locale,
-        user: response.user || null,
-      },
-      {
-        headers: response.headers,
-      },
-    );
+    return data(dataObj, { headers: response.headers });
   } else {
     context.root = true;
-    return data({
-      toastData,
-      isbot: botDetected,
-      locale,
-      user: response.user || null,
-    });
+    return data(dataObj);
   }
 };
 

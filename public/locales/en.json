@@ -1,4 +1,12 @@
 {
+  "meta": {
+    "title": "Dani – Fullstack Developer",
+    "description": "Fullstack developer specialized in TypeScript, Node.js, React/Remix. Explore scalable web systems, APIs, and production-ready solutions.",
+    "keywords": "fullstack developer, typescript developer, node.js developer, remix run, react developer, scalable systems, backend api developer, web engineer portfolio",
+    "ogTitle": "Dani – Fullstack Developer Portfolio",
+    "ogDescription": "Projects and systems built with modern TypeScript, Node.js, Remix, and high-scalability backend engineering.",
+    "aiSummary": "Fullstack developer focused on modern scalable web architecture, TypeScript ecosystems, custom REST systems and production engineering."
+  },
   "welcome": "Welcome to {{appName}}",
   "errors": {
     "default": {

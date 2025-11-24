@@ -1,4 +1,12 @@
 {
+  "meta": {
+    "title": "Dani – Fullstack fejlesztő",
+    "description": "Fullstack fejlesztő TypeScript, Node.js és React/Remix technológiákkal. Nézd meg a skálázható webes rendszereimet és API megoldásaimat.",
+    "keywords": "fullstack fejlesztő, typescript fejlesztő, node.js fejlesztő, remix run, react fejlesztő, skálázható rendszerek, backend api fejlesztő, portfólió",
+    "ogTitle": "Dani – Fullstack fejlesztői portfólió",
+    "ogDescription": "Projektek és rendszerek TypeScript, Node.js, Remix alapokon, skálázható backend infrastruktúrával.",
+    "aiSummary": "Fullstack fejlesztő modern, skálázható webarchitektúrára specializálódva: TypeScript, Node.js, saját REST rendszerek, production engineering."
+  },
   "welcome": "Üdvözöljük a(z) {{appName}} alkalmazásban",
   "errors": {
     "default": {
@@ -45,7 +53,7 @@
   },
   "languageChangedSuccessfully": "A nyelv sikeresen megváltozott erre: Magyar.",
   "hero": {
-    "greeting": "Szia, Dani én vagyok",
+    "greeting": "Szia, Dani vagyok",
     "role": "Fullstack Webfejlesztő",
     "experience": "Robusztus webalkalmazásokat építek 2017 óta",
     "cta": "Munkáim megtekintése",
