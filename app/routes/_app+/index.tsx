@@ -112,7 +112,6 @@ export default function Index() {
           <div className="text-center">
             <div className="mb-6">
               <p className="text-blue-400 text-lg mb-2 animate-fade-in">{t(`hero.greeting`)}</p>
-              <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 animate-fade-in-up">Dani</h1>
               <h2 className="text-2xl md:text-3xl text-gray-300 mb-6 animate-fade-in-up animation-delay-200">{t(`hero.role`)}</h2>
             </div>
 
