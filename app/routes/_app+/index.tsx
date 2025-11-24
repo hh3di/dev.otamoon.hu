@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { LuAArrowDown, LuArrowDown, LuBox, LuCode, LuExternalLink, LuGithub, LuMail, LuSend, LuShield, LuZap } from 'react-icons/lu';
+import { LuArrowDown, LuBox, LuCode, LuExternalLink, LuGithub, LuMail, LuShield, LuZap } from 'react-icons/lu';
 import { data, Form, useActionData, useNavigation, type ActionFunction } from 'react-router';
 import Spinner from '~/components/common/Spinner';
 import { getLanguage } from '~/utils/i18n/i18n';
