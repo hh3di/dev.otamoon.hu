@@ -69,11 +69,11 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ options, value, onChange, p
           className={`absolute z-10 w-full bg-slate-800 border p-1 border-gray-700 rounded-lg shadow-lg animate-fade-in`}
           style={openDirection === 'up' ? { bottom: '100%', top: 'auto', marginBottom: 8 } : { top: '100%', bottom: 'auto', marginTop: 8 }}
         >
-          <ul className="max-h-60 overflow-auto py-1">
+          <ul className="max-h-60 overflow-auto py-1 gap-2 px-1 flex flex-col">
             {options.map((opt) => (
               <li
                 key={opt.value}
-                className={`px-4 py-2 flex items-center rounded-md gap-2 cursor-pointer transition-all duration-150 hover:bg-slate-700/60 ${value?.value === opt.value ? 'bg-slate-700 font-semibold text-sky-400' : 'text-gray-300'}`}
+                className={`px-2 py-2 flex items-center rounded-md gap-2 cursor-pointer transition-all duration-150 hover:bg-slate-700/60 ${value?.value === opt.value ? 'bg-slate-700 font-semibold text-sky-400' : 'text-gray-300'}`}
                 onClick={() => {
                   onChange(opt);
                   setOpen(false);

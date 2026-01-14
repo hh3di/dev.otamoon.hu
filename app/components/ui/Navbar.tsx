@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useFetcher } from 'react-router';
 import { LuGlobe, LuMenu, LuX } from 'react-icons/lu';
@@ -6,7 +6,17 @@ import { LuGlobe, LuMenu, LuX } from 'react-icons/lu';
 export default function Navbar() {
   const { t, i18n } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const fetcher = useFetcher();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -27,7 +37,9 @@ export default function Navbar() {
   };
   return (
     <>
-      <header className="sticky top-0 left-0 z-50  ">
+      <header
+        className={`sticky top-0 left-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-gray-800/80 backdrop-blur-sm shadow-lg shadow-slate-900/50' : ''}`}
+      >
         <nav className="px-4 sm:px-16 lg:px-24">
           <div className="flex items-center justify-between h-16">
             <div className="shrink-0">

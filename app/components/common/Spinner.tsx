@@ -8,7 +8,7 @@ export default function Spinner({ fixed = false, size = '4rem', color = '#0ea5e9
       exit={{ opacity: 0 }}
       className={`${
         fixed
-          ? 'fixed top-0 left-0 w-full h-full bg-black/50 backdrop-blur-md flex items-center justify-center z-999'
+          ? 'fixed top-0 left-0 w-full h-full bg-black/50 backdrop-blur-sm flex items-center justify-center z-999'
           : 'flex items-center justify-center'
       }`}
     >
