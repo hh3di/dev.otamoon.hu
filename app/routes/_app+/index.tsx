@@ -50,7 +50,7 @@ export default function Index() {
     },
     {
       title: t(`skills.backend`),
-      skills: ['Node.js', 'Express', 'Fastify', 'PHP', 'TypeScript', 'JavaScript'],
+      skills: ['Node.js', 'Express', 'Fastify', 'PHP', 'TypeScript', 'JavaScript', 'C#'],
       color: 'green',
     },
     {
