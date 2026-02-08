@@ -204,7 +204,7 @@ export default function Index() {
 
           <div className="mt-12 text-center">
             <p className="text-gray-400 text-lg">
-              <span className="font-semibold text-white">8 {t(`skills.experienceYears`)}</span> {t(`skills.experienceDescription`)}
+              <span className="font-semibold text-white">{t(`skills.experienceYears`)}</span> {t(`skills.experienceDescription`)}
             </p>
             <p className="text-gray-500 mt-2">{t(`skills.levelDescription`)}</p>
           </div>
