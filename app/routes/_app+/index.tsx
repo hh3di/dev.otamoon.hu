@@ -60,7 +60,7 @@ export default function Index() {
     },
     {
       title: t(`skills.devops`),
-      skills: ['Git', 'Linux', 'Debian', 'Nginx', 'Apache'],
+      skills: ['Git', 'Linux', 'Debian', 'Nginx', 'Apache', 'Python'],
       color: 'orange',
     },
   ];
