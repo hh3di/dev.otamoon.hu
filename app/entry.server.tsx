@@ -94,7 +94,7 @@ export default function handleRequest(
             }),
           );
 
-          //pipe(body);
+          pipe(body);
         },
         onShellError(error: unknown) {
           reject(error);
