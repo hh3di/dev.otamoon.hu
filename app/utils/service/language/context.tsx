@@ -14,7 +14,6 @@ type LanguageContextType = {
 
   changeLanguage: (lang: Language) => Promise<void>;
 
-  /** true, amíg egy nyelvváltás folyamatban van */
   isChanging: boolean;
 };
 
@@ -33,15 +32,11 @@ export function LanguageProvider({
   const [messages, setMessages] = useState<Messages>(initialMessages);
   const [isChanging, setIsChanging] = useState(false);
 
-  // <html lang=""> automatikus frissítés
   useEffect(() => {
     document.documentElement.lang = language;
   }, [language]);
 
   const t = useMemo(() => createTranslator(messages), [messages]);
-
-  // A be nem fejeződött (elavult) kéréseket eldobjuk, hogy ne
-  // írhassák felül egy gyorsabb, később indított váltás eredményét.
   const requestIdRef = useRef(0);
 
   async function changeLanguage(lang: Language) {
@@ -52,8 +47,6 @@ export function LanguageProvider({
 
     try {
       const newMessages = await loadMessages(lang);
-
-      // Csak akkor alkalmazzuk az eredményt, ha közben nem indult újabb váltás.
       if (requestId === requestIdRef.current) {
         setLanguage(lang);
         setMessages(newMessages);
@@ -68,13 +61,7 @@ export function LanguageProvider({
     }
   }
 
-  const value = useMemo<LanguageContextType>(
-    () => ({ language, messages, t, changeLanguage, isChanging }),
-    // changeLanguage stabil referenciájú lenne useCallback-kel is,
-    // de mivel csak a Provider szintjén jön létre újra, ez elfogadható.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [language, messages, t, isChanging],
-  );
+  const value = useMemo<LanguageContextType>(() => ({ language, messages, t, changeLanguage, isChanging }), [language, messages, t, isChanging]);
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 }

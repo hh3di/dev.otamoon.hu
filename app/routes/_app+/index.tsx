@@ -91,7 +91,7 @@ export default function Index() {
       title: t(`projects.dev.title`),
       description: t(`projects.dev.description`),
       highlights: t(`projects.dev.highlights`),
-      technologies: ['React Router V7', 'TypeScript', 'Tailwind CSS', 'i18n', 'Email Service'],
+      technologies: ['React Router V7 Fork', 'TypeScript', 'Tailwind CSS', 'Custom Language System', 'Email Service'],
       liveUrl: 'https://dev.otamoon.hu',
       githubUrl: 'https://github.com/hh3di/dev.otamoon.hu',
       isPersonal: true,
@@ -424,7 +424,6 @@ export const action: ActionFunction = async ({ request }) => {
         </div>
         
         <div style="margin-top: 20px; padding: 15px; background-color: #eff6ff; border-radius: 8px; font-size: 12px; color: #6b7280;">
-          <p style="margin: 0;">${t('contact.emailSentAt')}: ${new Date().toLocaleString(language)}</p>
           <p style="margin: 5px 0 0 0;">${t('contact.fromWebsite')}: dev.otamoon.hu</p>
         </div>
       </div>
