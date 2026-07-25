@@ -1,17 +1,19 @@
+import { ArrowDown, Box, Code, ExternalLink, Mail, Shield, Zap } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { LuArrowDown, LuBox, LuCode, LuExternalLink, LuGithub, LuMail, LuShield, LuZap } from 'react-icons/lu';
+import { LuGithub } from 'react-icons/lu';
 import { data, Form, useActionData, useNavigation, type ActionFunction } from 'react-router';
 import Spinner from '~/components/common/Spinner';
-import { getLanguage } from '~/utils/i18n/i18n';
-import createI18nInstance from '~/utils/i18n/i18next.server';
 import { FlutryMail } from '~/utils/service/FlutryMail.service';
 import { FormatZodError } from '~/utils/service/function.service';
+import { useLanguage } from '~/utils/service/language/context';
+import { loadMessages } from '~/utils/service/language/loader';
+import { getLanguage } from '~/utils/service/language/server';
+import { createTranslator } from '~/utils/service/language/translator';
 import { dataWithToast } from '~/utils/service/session.service';
 import { contactSchema } from '~/utils/zod/contact.zod';
 
 export default function Index() {
-  const { t } = useTranslation();
+  const { t } = useLanguage();
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -21,22 +23,22 @@ export default function Index() {
 
   const focusAreas = [
     {
-      icon: LuCode,
+      icon: Code,
       title: t(`about.cleanCode`),
       description: t(`about.cleanCodeDesc`),
     },
     {
-      icon: LuBox,
+      icon: Box,
       title: t(`about.systemDesign`),
       description: t(`about.systemDesignDesc`),
     },
     {
-      icon: LuShield,
+      icon: Shield,
       title: t(`about.security`),
       description: t(`about.securityDesc`),
     },
     {
-      icon: LuZap,
+      icon: Zap,
       title: t(`about.performance`),
       description: t(`about.performanceDesc`),
     },
@@ -79,7 +81,7 @@ export default function Index() {
     {
       title: t(`projects.flutry.title`),
       description: t(`projects.flutry.description`),
-      highlights: t(`projects.flutry.highlights`, { returnObjects: true }),
+      highlights: t(`projects.flutry.highlights`),
       technologies: ['Node.js', 'TypeScript', 'REST API', 'Security', 'Performance'],
       liveUrl: '',
       githubUrl: 'https://github.com/Flutry/Flutry',
@@ -88,7 +90,7 @@ export default function Index() {
     {
       title: t(`projects.dev.title`),
       description: t(`projects.dev.description`),
-      highlights: t(`projects.dev.highlights`, { returnObjects: true }),
+      highlights: t(`projects.dev.highlights`),
       technologies: ['React Router V7', 'TypeScript', 'Tailwind CSS', 'i18n', 'Email Service'],
       liveUrl: 'https://dev.otamoon.hu',
       githubUrl: 'https://github.com/hh3di/dev.otamoon.hu',
@@ -123,13 +125,13 @@ export default function Index() {
                 className="px-8 py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-all transform hover:scale-105 flex items-center gap-2"
               >
                 {t(`hero.cta`)}
-                <LuArrowDown size={20} />
+                <ArrowDown size={20} />
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
                 className="px-8 py-3 bg-slate-700 text-white rounded-lg font-medium hover:bg-gray-700 transition-all transform hover:scale-105 flex items-center gap-2 border border-gray-700"
               >
-                <LuMail size={20} />
+                <Mail size={20} />
                 {t(`hero.contact`)}
               </button>
             </div>
@@ -140,7 +142,7 @@ export default function Index() {
                 className="text-gray-500 hover:text-gray-300 transition-colors"
                 aria-label="Scroll to about section"
               >
-                <LuArrowDown size={32} />
+                <ArrowDown size={32} />
               </button>
             </div>
           </div>
@@ -260,7 +262,7 @@ export default function Index() {
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 px-5 py-2 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-all"
                       >
-                        <LuExternalLink size={18} />
+                        <ExternalLink size={18} />
                         {t(`projects.viewDemo`)}
                       </a>
                     )}
@@ -369,7 +371,7 @@ export default function Index() {
                 className="flex items-center gap-2 text-gray-400 hover:text-sky-500 transition-colors"
                 aria-label="Email"
               >
-                <LuMail size={24} />
+                <Mail size={24} />
                 dev@otamoon.hu
               </a>
               <a
@@ -397,8 +399,9 @@ export const action: ActionFunction = async ({ request }) => {
     return data({ error: FormatZodError(validate.error) });
   }
 
-  const { locale } = getLanguage(request);
-  const { t } = await createI18nInstance(locale);
+  const language = getLanguage(request);
+  const messages = await loadMessages(language);
+  const t = createTranslator(messages);
 
   try {
     const { name, email, message } = validate.data;
@@ -421,7 +424,7 @@ export const action: ActionFunction = async ({ request }) => {
         </div>
         
         <div style="margin-top: 20px; padding: 15px; background-color: #eff6ff; border-radius: 8px; font-size: 12px; color: #6b7280;">
-          <p style="margin: 0;">${t('contact.emailSentAt')}: ${new Date().toLocaleString(locale)}</p>
+          <p style="margin: 0;">${t('contact.emailSentAt')}: ${new Date().toLocaleString(language)}</p>
           <p style="margin: 5px 0 0 0;">${t('contact.fromWebsite')}: dev.otamoon.hu</p>
         </div>
       </div>

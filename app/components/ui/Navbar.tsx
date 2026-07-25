@@ -1,13 +1,10 @@
+import { Globe, Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useFetcher } from 'react-router';
-import { LuGlobe, LuMenu, LuX } from 'react-icons/lu';
-
+import { useLanguage } from '~/utils/service/language/context';
 export default function Navbar() {
-  const { t, i18n } = useTranslation();
+  const { t, changeLanguage, language } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const fetcher = useFetcher();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,13 +24,9 @@ export default function Navbar() {
   };
 
   const toggleLanguage = () => {
-    const newLanguage = i18n.language === 'en' ? 'hu' : 'en';
+    const newLanguage = language === 'en' ? 'hu' : 'en';
 
-    // Azonnal váltunk a nyelvn a UX-ért
-    i18n.changeLanguage(newLanguage);
-
-    // Elküldjük a server-nek hogy mentse el cookie-ba
-    fetcher.submit({ language: newLanguage }, { method: 'POST', action: '/action/changeLanguage' });
+    changeLanguage(newLanguage);
   };
   return (
     <>
@@ -65,8 +58,8 @@ export default function Navbar() {
                 className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-800 text-gray-300 hover:text-white hover:bg-slate-700 transition-all"
                 aria-label="Toggle language"
               >
-                <LuGlobe size={18} />
-                <span className="text-sm font-medium uppercase">{i18n.language}</span>
+                <Globe size={18} />
+                <span className="text-sm font-medium uppercase">{language}</span>
               </button>
             </div>
 
@@ -76,15 +69,15 @@ export default function Navbar() {
                 className="p-2 rounded-lg bg-slate-800 text-gray-300 hover:text-white transition-colors"
                 aria-label="Toggle language"
               >
-                <LuGlobe size={20} />
+                <Globe size={20} />
               </button>
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="text-gray-300 hover:text-white transition-colors relative"
                 aria-label="Toggle menu"
               >
-                <LuX size={24} className={`${isMenuOpen ? 'rotate-0' : 'rotate-180 opacity-0'} absolute duration-200`} />
-                <LuMenu size={24} className={`${isMenuOpen ? '-rotate-180 opacity-0' : 'rotate-0'} duration-200`} />
+                <X size={24} className={`${isMenuOpen ? 'rotate-0' : 'rotate-180 opacity-0'} absolute duration-200`} />
+                <Menu size={24} className={`${isMenuOpen ? '-rotate-180 opacity-0' : 'rotate-0'} duration-200`} />
               </button>
             </div>
           </div>

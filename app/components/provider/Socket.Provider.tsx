@@ -1,6 +1,6 @@
-import config from 'config';
 import React, { createContext, useContext, useEffect, useRef, useState, useMemo } from 'react';
 import { io as ClientIO, Socket } from 'socket.io-client';
+import config from '../../../config';
 
 type SocketContextType = {
   socket: Socket | null;

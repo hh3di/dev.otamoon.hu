@@ -1,94 +1,78 @@
-import { useRef, useEffect, useState } from 'react';
+import pkg from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
-export default function Image({
-  src,
-  alt,
-  width,
-  height,
-  quality = 75,
-  objectFit = 'contain',
-  objectPosition = 'center',
-  format = 'webp',
-  className = '',
-  noloading,
-}: {
+const { LazyLoadImage } = pkg;
+
+interface ImageProps {
   src: string;
   alt: string;
-  width: number | undefined;
-  height: number | undefined;
-  quality?: number;
-  objectFit?: 'cover' | 'contain';
-  objectPosition?: 'top' | 'bottom' | 'left' | 'right' | 'center';
-  format?: string;
   className?: string;
-  noloading?: boolean;
-}) {
-  const fullSizeSrc = `/image?src=${encodeURIComponent(src)}&w=${width}&h=${height}&q=${quality}&format=${format}&fit=${objectFit}&position=${objectPosition}`;
-  const wrapperRef = useRef<HTMLDivElement>(null);
-  const imgRef = useRef<HTMLImageElement>(null);
-  const [isInView, setIsInView] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
+  width?: number;
+  height?: number;
+  quality?: number;
+  format?: 'avif' | 'webp' | 'jpeg' | 'png';
+  loading?: 'lazy' | 'eager';
+  sizes?: string;
+}
 
-  useEffect(() => {
-    setIsLoaded(false);
-    setIsInView(false);
-  }, [src]);
+const BREAKPOINTS = [320, 480, 640, 768, 1024, 1280, 1600, 1920];
 
-  // IntersectionObserver for lazy loading
-  useEffect(() => {
-    if (!wrapperRef.current) return;
-    let observer: IntersectionObserver | null = new window.IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setIsInView(true);
-          observer?.disconnect();
-        }
-      },
-      { threshold: 0.01, rootMargin: '200px' },
-    );
-    observer.observe(wrapperRef.current);
-    return () => observer && observer.disconnect();
-  }, [src]);
+export default function Image({ src, alt, className, width, height, quality = 80, format, loading = 'lazy', sizes = '100vw' }: ImageProps) {
+  const build = (w: number) => {
+    const params = new URLSearchParams({
+      src,
+      w: String(w),
+      q: String(quality),
+    });
 
-  return (
-    <div ref={wrapperRef} className={`${className.includes('absolute') ? '' : 'relative'} overflow-hidden ${className}`}>
-      {/* Skeleton loader */}
-      {!isLoaded && !noloading && <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent z-10" />}
+    if (format) {
+      params.set('format', format);
+    }
+
+    return `/image?${params.toString()}`;
+  };
+
+  const srcSet = BREAKPOINTS.map((w) => `${build(w)} ${w}w`).join(', ');
+
+  const imageSrc = build(width ?? 1024);
+
+  if (loading === 'eager') {
+    return (
       <img
-        ref={imgRef}
-        src={isInView ? fullSizeSrc : undefined}
-        alt={alt}
+        src={imageSrc}
+        srcSet={srcSet}
+        sizes={sizes}
         width={width}
         height={height}
-        loading="eager"
-        style={{
-          objectPosition: objectPosition || 'center',
-          objectFit: objectFit || 'contain',
-          transition: 'opacity 0.3s ease-in-out',
-          opacity: isLoaded ? 1 : 0,
-          width: '100%',
-          height: '100%',
-        }}
-        onLoad={() => setIsLoaded(true)}
-        onError={() => setIsLoaded(true)}
+        alt={alt}
+        className={className}
         decoding="async"
+        loading="eager"
         fetchPriority="high"
       />
+    );
+  }
 
-      {/* <noscript> fallback for SEO/SSR/JS-less */}
-      <noscript>
-        <img
-          src={fullSizeSrc}
-          alt={alt}
-          width={width}
-          height={height}
-          className={className}
-          style={{ display: 'block', width: '100%', height: '100%', objectFit: objectFit || 'contain', objectPosition: objectPosition || 'center' }}
-          loading="eager"
-          decoding="async"
-          fetchPriority="high"
-        />
-      </noscript>
-    </div>
+  return (
+    <LazyLoadImage
+      src={imageSrc}
+      srcSet={srcSet}
+      sizes={sizes}
+      alt={alt}
+      width={width}
+      height={height}
+      className={className}
+      effect="blur"
+      threshold={250}
+      decoding="async"
+      loading="lazy"
+      visibleByDefault={false}
+      useIntersectionObserver
+      wrapperProps={{
+        style: {
+          display: 'block',
+        },
+      }}
+    />
   );
 }

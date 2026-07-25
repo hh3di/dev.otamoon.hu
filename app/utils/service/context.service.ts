@@ -1,7 +1,10 @@
-import type { WaitOptions } from '../types/context.types';
+export interface WaitOptions {
+  timeout?: number;
+  interval?: number;
+}
 
 const DEFAULT_OPTIONS: Required<WaitOptions> = {
-  timeout: 10000, // 10 másodperc
+  timeout: 10000, // 10 sec
   interval: 100, // 100ms
 };
 
@@ -13,7 +16,7 @@ export const waitForContext = <T extends Record<string, any>>(context: T, condit
 
     const checkCondition = () => {
       if (context[condition]) {
-        console.log(`${String(condition)} finished`);
+        //console.log(`${String(condition)} finished`);
         resolve();
         return;
       }
