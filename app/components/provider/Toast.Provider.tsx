@@ -26,7 +26,7 @@ export const ToastProvider = ({ children }: { children: React.ReactNode }) => {
         toastOptions={{
           duration: 5000,
           style: {
-            background: '#334155',
+            background: '#05050a',
             color: '#fff',
           },
         }}

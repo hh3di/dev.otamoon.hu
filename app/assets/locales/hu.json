@@ -1,114 +1,181 @@
 {
-  "meta": {
-    "title": "Dani – Fullstack fejlesztő",
-    "description": "Fullstack fejlesztő TypeScript, Node.js és React/Remix technológiákkal. Nézd meg a skálázható webes rendszereimet és API megoldásaimat.",
-    "keywords": "fullstack fejlesztő, typescript fejlesztő, node.js fejlesztő, remix run, react fejlesztő, skálázható rendszerek, backend api fejlesztő, portfólió",
-    "ogTitle": "Dani – Fullstack fejlesztői portfólió",
-    "ogDescription": "Projektek és rendszerek TypeScript, Node.js, Remix alapokon, skálázható backend infrastruktúrával.",
-    "aiSummary": "Fullstack fejlesztő modern, skálázható webarchitektúrára specializálódva: TypeScript, Node.js, saját REST rendszerek, production engineering."
-  },
-  "welcome": "Üdvözöljük a(z) {{appName}} alkalmazásban",
-  "errors": {
-    "default": {
+  "error": {
+    "notfound": {
+      "title": "404",
+      "headline": "Az oldal nem található",
+      "description": "A keresett oldal nem létezik, áthelyezték vagy eltávolították.",
+      "button": "Vissza a főoldalra",
+      "button2": "Vissza a vezérlőpultra"
+    },
+    "boundary": {
       "title": "Hiba történt",
-      "message": "Valami hiba történt, kérjük, próbálja meg később újra.",
-      "suggestion": "Ha a probléma továbbra is fennáll, vegye fel a kapcsolatot az ügyfélszolgálattal.",
-      "redirectPath": "/",
-      "buttonText": "Főoldal"
-    },
-    "unknown": {
-      "title": "Ismeretlen hiba",
-      "message": "Ismeretlen hiba történt. Kérjük, próbálja meg később újra.",
-      "suggestion": "Ha a probléma továbbra is fennáll, vegye fel a kapcsolatot az ügyfélszolgálattal.",
-      "redirectPath": "/",
-      "buttonText": "Főoldal"
-    },
-    "not_found": {
-      "title": "Az oldal nem található",
-      "message": "A keresett oldal nem található.",
-      "suggestion": "Ellenőrizze az URL-t vagy töltse újra az oldalt.",
-      "redirectPath": "/",
-      "buttonText": "Főoldal"
-    },
-    "server_unavailable": {
-      "title": "A szerver nem elérhető",
-      "message": "A szerver jelenleg nem elérhető. Kérjük, próbálja meg később újra.",
-      "suggestion": "Ha a probléma továbbra is fennáll, vegye fel a kapcsolatot az ügyfélszolgálattal.",
-      "redirectPath": "/",
-      "buttonText": "Főoldal"
+      "headline": "Váratlan rendszerhiba lépett fel",
+      "description": "Hiba történt az oldal betöltése közben. Kérjük, próbáld meg újra később.",
+      "button": "Vissza a főoldalra"
     },
     "rate_limited": {
       "title": "Túl sok kérés",
-      "message": "Rövid időn belül túl sok kérést küldött.",
-      "suggestion": "Kérjük, várjon egy kicsit, mielőtt újra próbálkozik. ({{retry_after}} másodperc)",
-      "redirectPath": "/",
-      "buttonText": "Főoldal"
-    }
-  },
-  "nav": {
-    "about": "Rólam",
-    "projects": "Projektek",
-    "skills": "Készségek",
-    "contact": "Kapcsolat"
-  },
-  "languageChangedSuccessfully": "A nyelv sikeresen megváltozott erre: Magyar.",
-  "hero": {
-    "greeting": "Szia, Dani vagyok",
-    "role": "Fullstack Webfejlesztő",
-    "experience": "Robusztus webalkalmazásokat építek 2017 óta",
-    "cta": "Munkáim megtekintése",
-    "contact": "Kapcsolatfelvétel"
-  },
-  "about": {
-    "title": "Rólam",
-    "description": "9 éves tapasztalattal rendelkező fullstack fejlesztő vagyok, aki skálázható és biztonságos webalkalmazásokat készít. A munkámban a tiszta kódra, az átgondolt rendszertervezésre és a teljesítmény-optimalizálásra helyezem a hangsúlyt. Olyan szoftvereket készítek, amelyek nemcsak ma működnek, hanem hosszú távon is karbantarthatók és adaptálhatók.",
-    "focus": "Fókuszterületek",
-    "cleanCode": "Tiszta kód",
-    "cleanCodeDesc": "Karbantartható, olvasható kód írása, amely kiállja az idő próbáját",
-    "systemDesign": "Rendszertervezés",
-    "systemDesignDesc": "Skálázható megoldások tervezése átgondolt mintákkal",
-    "security": "Biztonság",
-    "securityDesc": "Biztonsági alapelvek alkalmazása az alapoktól kezdve",
-    "performance": "Teljesítmény",
-    "performanceDesc": "Sebesség és hatékonyság optimalizálása minden rétegben"
-  },
-  "skills": {
-    "title": "Technikai készségek",
-    "frontend": "Frontend",
-    "backend": "Backend",
-    "database": "Adatbázis & ORM",
-    "devops": "DevOps & Eszközök",
-    "other": "További technológiák",
-    "experienceYears": "9 év",
-    "experienceDescription": "tapasztalat production-ready alkalmazások fejlesztésében",
-    "levelDescription": "Medior/Senior szintű fejlesztő, aki a kiválóság iránt elkötelezett"
-  },
-  "projects": {
-    "title": "Kiemelt projektek",
-    "viewDemo": "ÉlőDemo",
-    "viewCode": "Kód megtekintése",
-    "personalProject": "Saját projekt",
-    "moreProjects": "További projektek és nyílt forráskódú közreműködések kérésre elérhetők",
-    "keyHighlights": "Főbb jellemzők",
-    "flutry": {
-      "title": "Flutry REST API",
-      "description": "Egy átfogó REST API rendszer, amelyet a semmiből építettem fel, skálázhatóságra és biztonságra tervezve. Ez a projekt modern API architektúra mintákat, hatékony adatkezelést és robusztus autentikációs mechanizmusokat mutat be. A rendszer nagy volumenű kéréseket kezel alacsony késleltetéssel, miközben iparági szabványnak megfelelő biztonsági gyakorlatokat alkalmaz.",
-      "highlights": ["Egyedi architektúra", "Skálázható tervezési minták", "Biztonság-központú megközelítés", "Optimalizált teljesítmény"]
+      "headline": "Kérjük, várj egy pillanatot",
+      "description": "Rövid idő alatt túl sok kérést küldtél. Várj egy kicsit, majd próbáld újra.",
+      "button": "Vissza a főoldalra"
     },
-    "dev": {
-      "title": "dev.otamoon.hu - Portfolió",
-      "description": "Az én személyes portfolió oldalam, amelyet teljes egészében saját fejlesztésű technológiákkal építettem fel. Modern React Router V7-et használ optimális navigációhoz, Tailwind CSS-sel készült reszponzív dizájnnal és saját email szolgáltatással a kapcsolatfelvételi űrlaphoz. Ez a projekt demonstrálja a teljes fejlesztési készségeimet és elkötelezettségemet a minőségi kód iránt.",
-      "highlights": [
-        "Személyes portfolió és bemutatkozás",
-        "React Router V7 és Tailwind CSS",
-        "Saját email szolgáltatás integráció",
-        "Többnyelvű támogatás (HU/EN)"
-      ]
+    "internal_server_error": {
+      "title": "Szerverhiba",
+      "headline": "A rendszer jelenleg nem elérhető",
+      "description": "Hiba történt a szerver működése közben. Az adataid biztonságban vannak. Kérjük, próbáld meg újra később.",
+      "button": "Vissza a főoldalra"
     }
   },
+  "meta": {
+    "title": "Szegedi Dániel — Fullstack Fejlesztő",
+    "description": "Fullstack fejlesztő, aki modern webalkalmazásokat, skálázható backend rendszereket és egyedi digitális megoldásokat épít TypeScript, React és Node.js technológiákkal.",
+    "keywords": "fullstack fejlesztő, typescript fejlesztő, react fejlesztő, node.js fejlesztő, backend fejlesztő, webalkalmazás fejlesztés, api fejlesztés, modern webfejlesztés",
+    "ogTitle": "Szegedi Dániel — Fullstack Fejlesztő Portfólió",
+    "ogDescription": "Saját fejlesztésű rendszerek, modern webalkalmazások és skálázható backend megoldások TypeScript, React és Node.js alapokon."
+  },
+
+  "nav": {
+    "logoName": "Szegedi Dániel",
+    "links": {
+      "about": "Rólam",
+      "skills": "Készségek",
+      "projects": "Projektek",
+      "timeline": "Tapasztalat",
+      "services": "Szolgáltatások",
+      "contact": "Kapcsolat"
+    },
+    "ctaButton": "Dolgozzunk együtt",
+    "menuAriaLabel": "Menü"
+  },
+
+  "hero": {
+    "badge": "Elérhető új projektekre",
+    "titlePrefix": "Szegedi Dániel —",
+    "titleHighlight": "Fullstack Fejlesztő",
+    "description": "Komplett digitális rendszereket építek az ötlettől egészen a működő termékig. Modern frontendek, stabil backendek és átgondolt architektúrák egy kézben.",
+    "primaryButton": "Projektjeim megtekintése",
+    "secondaryButton": "Kapcsolatfelvétel"
+  },
+
+  "about": {
+    "eyebrow": "Rólam",
+    "title": "Ötletekből működő rendszereket építek",
+    "description": "Számomra a fejlesztés nem csak kódírás, hanem problémák megoldása és olyan rendszerek létrehozása, amelyek hosszú távon is értéket teremtenek.",
+
+    "paragraph1": "Több mint 2017 óta foglalkozom fejlesztéssel, amely eredetileg hobbinak indult, majd idővel a saját rendszerek építése iránti szenvedéllyé vált. A teljes fejlesztési folyamatban otthonosan mozgok a frontend felületektől kezdve a backend architektúrán át egészen az adatbázisokig és az üzemeltetésig.",
+
+    "paragraph2": "Leginkább olyan projekteken szeretek dolgozni, ahol összetett problémákra kell tiszta és megbízható megoldásokat találni. Fontos számomra a jól strukturált kód, a teljesítmény és az, hogy egy rendszer ne csak ma működjön, hanem évekkel később is könnyen fejleszthető maradjon.",
+
+    "tags": {
+      "cleanCode": "Tiszta kód",
+      "performance": "Teljesítmény",
+      "uxFocused": "Felhasználói élmény",
+      "scalability": "Skálázható rendszerek"
+    }
+  },
+
+  "skills": {
+    "eyebrow": "Készségek",
+    "title": "Modern technológiák, teljes stack szemlélettel",
+    "description": "A tervezéstől a megvalósításig teljes körű fejlesztési tapasztalattal építek modern és megbízható alkalmazásokat.",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Adatbázis",
+      "devops": "DevOps",
+      "languages": "Programozási nyelvek",
+      "tools": "Eszközök"
+    }
+  },
+
+  "projects": {
+    "eyebrow": "Kiemelt projektek",
+    "title": "Rendszerek, amelyeket teljes egészében én építettem",
+    "description": "Saját fejlesztésű projektek, amelyek bemutatják a fullstack szemléletet, az architektúra tervezést és a problémamegoldó gondolkodást.",
+    "codeLink": "Forráskód",
+    "demoLink": "Élő verzió",
+
+    "items": {
+      "flutryApi": {
+        "title": "Flutry REST API",
+        "description": "A Flutry egy saját fejlesztésű backend rendszer, amelyet teljes egészében az alapoktól építettem fel. A projekt célja egy stabil, biztonságos és könnyen bővíthető architektúra létrehozása volt modern TypeScript alapokon. A rendszer fejlett API struktúrát, hatékony adatkezelést, autentikációt és skálázható megoldásokat alkalmaz, amelyek valódi produkciós környezetben is megállják a helyüket.",
+        "tags": {
+          "customArchitecture": "Egyedi architektúra",
+          "scalableDesignPatterns": "Skálázható tervezési minták",
+          "securityFocused": "Biztonságközpontú fejlesztés",
+          "optimizedPerformance": "Optimalizált teljesítmény"
+        }
+      },
+      "portfolioSite": {
+        "title": "dev.otamoon.hu - Portfolió",
+        "description": "Az én személyes portfolió oldalam, amelyet teljes egészében saját fejlesztésű technológiákkal építettem fel. Modern React Router V7-et használ optimális navigációhoz, Tailwind CSS-sel készült reszponzív dizájnnal és saját email szolgáltatással a kapcsolatfelvételi űrlaphoz. Ez a projekt demonstrálja a teljes fejlesztési készségeimet és elkötelezettségemet a minőségi kód iránt.",
+        "tags": {
+          "personalPortfolio": "Személyes portfolió és bemutatkozás",
+          "reactRouterTailwind": "React Router V7 és Tailwind CSS",
+          "emailIntegration": "Saját email szolgáltatás integráció",
+          "multiLanguage": "Többnyelvű támogatás (HU/EN)"
+        }
+      }
+    }
+  },
+
+  "services": {
+    "eyebrow": "Szolgáltatások",
+    "title": "Miben tudok segíteni",
+    "description": "Az ötlettől a bevezetésig — teljes fejlesztési lefedettség egy kézben.",
+    "items": {
+      "websites": {
+        "title": "Weboldalak",
+        "description": "Gyors, SEO-barát és lenyűgöző megjelenésű weboldalak, amik konvertálnak."
+      },
+      "dashboards": {
+        "title": "Dashboardok",
+        "description": "Adatvezérelt admin felületek és analitikai eszközök, amelyek átláthatóvá teszik az üzletet."
+      },
+      "apiDevelopment": {
+        "title": "API Fejlesztés",
+        "description": "Skálázható, dokumentált REST és GraphQL API-k, amikre biztonsággal építhetsz."
+      },
+      "backendSystems": {
+        "title": "Backend Rendszerek",
+        "description": "Robusztus szerveroldali architektúra, ami bírja a terhelést."
+      },
+      "fullstackDevelopment": {
+        "title": "Fullstack Fejlesztés",
+        "description": "Ötlettől a kész termékig, egy kézben tartva a teljes fejlesztési folyamatot."
+      }
+    }
+  },
+
+  "techStack": {
+    "eyebrow": "Tech stack",
+    "title": "Amivel nap mint nap dolgozom"
+  },
+
   "contact": {
+    "eyebrow": "Kapcsolat",
     "title": "Dolgozzunk együtt",
-    "description": "Mindig érdekelnek az új projektek és lehetőségek. Akár kérdésed van, akár csak köszönni szeretnél, nyugodtan keress.",
+    "description": "Van egy ötleted? Írj pár sort, és 24 órán belül válaszolok.",
+    "links": {
+      "email": {
+        "label": "Email",
+        "value": "dev@otamoon.hu"
+      },
+      "github": {
+        "label": "GitHub",
+        "value": "github.com/hh3di"
+      }
+    },
+    "form": {
+      "nameLabel": "Név",
+      "namePlaceholder": "Ahogy szólíthatlak",
+      "emailLabel": "Email",
+      "emailPlaceholder": "te@email.com",
+      "messageLabel": "Üzenet",
+      "messagePlaceholder": "Miben segíthetek?",
+      "submitButton": "Üzenet küldése",
+      "submitButtonSent": "Elküldve!"
+    },
     "name": "Neved",
     "email": "Email címed",
     "message": "Üzeneted",
@@ -118,27 +185,11 @@
     "newMessage": "Új üzenet",
     "emailSubject": "Kapcsolatfelvételi űrlap üzenet",
     "emailSentAt": "Küldve",
-    "fromWebsite": "Weboldalról",
-    "error": {
-      "name": {
-        "required": "Ez a mező kötelező",
-        "minLength": "Kérjük, adjon meg legalább 2 karaktert",
-        "maxLength": "Legfeljebb 50 karakter megengedett"
-      },
-      "email": {
-        "required": "Ez a mező kötelező",
-        "emailInvalid": "Kérjük, érvényes email címet adjon meg",
-        "maxLength": "Legfeljebb 100 karakter megengedett"
-      },
-      "message": {
-        "required": "Ez a mező kötelező",
-        "minLength": "Kérjük, adjon meg legalább 10 karaktert",
-        "maxLength": "Legfeljebb 2000 karakter megengedett"
-      }
-    }
+    "fromWebsite": "Weboldalról"
   },
+
   "footer": {
-    "rights": "Minden jog fenntartva.",
-    "built": "React, TypeScript és Tailwind CSS használatával készült"
+    "logoName": "Szegedi Dani",
+    "copyright": "Szegedi Dániel. Minden jog fenntartva."
   }
 }

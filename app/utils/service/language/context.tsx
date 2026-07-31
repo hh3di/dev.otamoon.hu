@@ -1,9 +1,7 @@
-import { createContext, useContext, useMemo, useState, useEffect, useRef } from 'react';
+import { createContext, useContext, useMemo, useState, useEffect, useRef, useCallback } from 'react';
 
 import type { Language, Messages } from './types';
-
 import { createTranslator } from './translator';
-
 import { loadMessages } from './loader';
 
 type LanguageContextType = {
@@ -32,36 +30,64 @@ export function LanguageProvider({
   const [messages, setMessages] = useState<Messages>(initialMessages);
   const [isChanging, setIsChanging] = useState(false);
 
-  useEffect(() => {
-    document.documentElement.lang = language;
-  }, [language]);
-
-  const t = useMemo(() => createTranslator(messages), [messages]);
   const requestIdRef = useRef(0);
 
-  async function changeLanguage(lang: Language) {
-    if (lang === language) return;
+  useEffect(() => {
+    document.documentElement.lang = language;
 
-    const requestId = ++requestIdRef.current;
-    setIsChanging(true);
+    const hasLanguageCookie = document.cookie.split('; ').some((cookie) => cookie.startsWith('lang='));
 
-    try {
-      const newMessages = await loadMessages(lang);
-      if (requestId === requestIdRef.current) {
+    if (!hasLanguageCookie) {
+      document.cookie = [`lang=${language}`, 'path=/', 'max-age=31536000', 'SameSite=Lax'].join(';');
+    }
+  }, [language]);
+
+  const t = useMemo(() => {
+    return createTranslator(messages);
+  }, [messages]);
+
+  const changeLanguage = useCallback(
+    async (lang: Language) => {
+      if (lang === language) {
+        return;
+      }
+
+      const requestId = ++requestIdRef.current;
+
+      setIsChanging(true);
+
+      try {
+        const newMessages = await loadMessages(lang);
+
+        if (requestId !== requestIdRef.current) {
+          return;
+        }
+
         setLanguage(lang);
         setMessages(newMessages);
-        document.cookie = `lang=${lang};path=/;max-age=31536000;SameSite=Lax`;
-      }
-    } catch (err) {
-      console.error(`Nem sikerült betölteni a(z) "${lang}" nyelvet:`, err);
-    } finally {
-      if (requestId === requestIdRef.current) {
-        setIsChanging(false);
-      }
-    }
-  }
 
-  const value = useMemo<LanguageContextType>(() => ({ language, messages, t, changeLanguage, isChanging }), [language, messages, t, isChanging]);
+        document.cookie = [`lang=${lang}`, 'path=/', 'max-age=31536000', 'SameSite=Lax'].join(';');
+      } catch (err) {
+        console.error(`Nem sikerült betölteni a(z) "${lang}" nyelvet:`, err);
+      } finally {
+        if (requestId === requestIdRef.current) {
+          setIsChanging(false);
+        }
+      }
+    },
+    [language],
+  );
+
+  const value = useMemo<LanguageContextType>(
+    () => ({
+      language,
+      messages,
+      t,
+      changeLanguage,
+      isChanging,
+    }),
+    [language, messages, t, changeLanguage, isChanging],
+  );
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 }

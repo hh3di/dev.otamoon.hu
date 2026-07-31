@@ -102,12 +102,12 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-export const loader: LoaderFunction = async ({ request }) => {
+export const loader: LoaderFunction = async ({ request, context }) => {
+  const ctx = context as {
+    root?: boolean;
+  };
+  ctx.root = false;
   const language = getLanguage(request);
-
-  // loadMessages() már önmagában fallback-el hiányzó fájl esetén,
-  // de egy váratlan hiba (pl. szintaktikai hiba a JSON-ban) itt sem
-  // döntheti le az egész oldalt.
   let messages;
   try {
     messages = await loadMessages(language);
@@ -125,7 +125,7 @@ export const loader: LoaderFunction = async ({ request }) => {
     language,
     messages,
   };
-
+  ctx.root = true;
   return response.headers ? data(payload, { headers: response.headers }) : data(payload);
 };
 

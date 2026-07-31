@@ -1,114 +1,183 @@
 {
-  "meta": {
-    "title": "Dani – Fullstack Developer",
-    "description": "Fullstack developer specialized in TypeScript, Node.js, React/Remix. Explore scalable web systems, APIs, and production-ready solutions.",
-    "keywords": "fullstack developer, typescript developer, node.js developer, remix run, react developer, scalable systems, backend api developer, web engineer portfolio",
-    "ogTitle": "Dani – Fullstack Developer Portfolio",
-    "ogDescription": "Projects and systems built with modern TypeScript, Node.js, Remix, and high-scalability backend engineering.",
-    "aiSummary": "Fullstack developer focused on modern scalable web architecture, TypeScript ecosystems, custom REST systems and production engineering."
-  },
-  "welcome": "Welcome to {{appName}}",
-  "errors": {
-    "default": {
-      "title": "An error occurred",
-      "message": "Something went wrong, please try again later.",
-      "suggestion": "If the problem persists, contact support.",
-      "redirectPath": "/",
-      "buttonText": "Home"
+  "error": {
+    "notfound": {
+      "title": "404",
+      "headline": "Page not found",
+      "description": "The page you are looking for does not exist, has been moved, or has been removed.",
+      "button": "Back to homepage",
+      "button2": "Back to dashboard"
     },
-    "unknown": {
-      "title": "Unknown error",
-      "message": "An unknown error occurred. Please try again later.",
-      "suggestion": "If the problem persists, contact customer support.",
-      "redirectPath": "/",
-      "buttonText": "Home"
-    },
-    "not_found": {
-      "title": "Page not found",
-      "message": "The page you are looking for cannot be found.",
-      "suggestion": "Check the URL or reload the page.",
-      "redirectPath": "/",
-      "buttonText": "Home"
-    },
-    "server_unavailable": {
-      "title": "Server unavailable",
-      "message": "The server is currently unavailable. Please try again later.",
-      "suggestion": "If the problem persists, contact support.",
-      "redirectPath": "/",
-      "buttonText": "Home"
+    "boundary": {
+      "title": "Something went wrong",
+      "headline": "An unexpected system error occurred",
+      "description": "An error occurred while loading the page. Please try again later.",
+      "button": "Back to homepage"
     },
     "rate_limited": {
       "title": "Too many requests",
-      "message": "You have sent too many requests in a short period.",
-      "suggestion": "Please wait a moment before trying again. ({{retry_after}} seconds)",
-      "redirectPath": "/",
-      "buttonText": "Home"
-    }
-  },
-  "nav": {
-    "about": "About Me",
-    "projects": "Projects",
-    "skills": "Skills",
-    "contact": "Contact"
-  },
-  "languageChangedSuccessfully": "Language changed successfully to English.",
-  "hero": {
-    "greeting": "Hi, I'm Dani",
-    "role": "Fullstack Web Developer",
-    "experience": "Building robust web applications since 2017",
-    "cta": "View My Work",
-    "contact": "Get In Touch"
-  },
-  "about": {
-    "title": "About Me",
-    "description": "I'm a fullstack developer with 9 years of experience creating scalable and secure web applications. I focus on clean code, thoughtful system design, and performance optimization. I build software that not only works today but remains maintainable and adaptable for the long term.",
-    "focus": "Focus Areas",
-    "cleanCode": "Clean Code",
-    "cleanCodeDesc": "Writing maintainable, readable code that stands the test of time",
-    "systemDesign": "System Design",
-    "systemDesignDesc": "Designing scalable solutions with thoughtful patterns",
-    "security": "Security",
-    "securityDesc": "Applying security principles from the ground up",
-    "performance": "Performance",
-    "performanceDesc": "Optimizing speed and efficiency at every layer"
-  },
-  "skills": {
-    "title": "Technical Skills",
-    "frontend": "Frontend",
-    "backend": "Backend",
-    "database": "Database & ORM",
-    "devops": "DevOps & Tools",
-    "other": "Other Technologies",
-    "experienceYears": "9 years",
-    "experienceDescription": "of experience building production-ready applications",
-    "levelDescription": "Medior/Senior level developer with a passion for excellence"
-  },
-  "projects": {
-    "title": "Featured Projects",
-    "viewDemo": "Live Demo",
-    "viewCode": "View Code",
-    "personalProject": "Personal Project",
-    "moreProjects": "More projects and open-source contributions available on request",
-    "keyHighlights": "Key Highlights",
-    "flutry": {
-      "title": "Flutry REST API",
-      "description": "A comprehensive REST API system built from scratch with scalability and security in mind. This project demonstrates modern API architecture patterns, efficient data handling, and robust authentication mechanisms. The system handles high-volume requests with low latency while maintaining industry-standard security practices.",
-      "highlights": ["Custom Architecture", "Scalable Design Patterns", "Security-First Approach", "Optimized Performance"]
+      "headline": "Please wait a moment",
+      "description": "You have sent too many requests in a short period of time. Please wait a moment and try again.",
+      "button": "Back to homepage"
     },
-    "dev": {
-      "title": "dev.otamoon.hu - Portfolio",
-      "description": "My personal portfolio website built entirely with custom-developed technologies. Features modern React Router V7 for optimal navigation, responsive design with Tailwind CSS, and custom email service integration for the contact form. This project showcases my full-stack development skills and commitment to quality code.",
-      "highlights": [
-        "Personal portfolio and showcase",
-        "React Router V7 and Tailwind CSS",
-        "Custom email service integration",
-        "Multi-language support (HU/EN)"
-      ]
+    "internal_server_error": {
+      "title": "Server error",
+      "headline": "The system is currently unavailable",
+      "description": "An error occurred while processing the request. Your data is safe. Please try again later.",
+      "button": "Back to homepage"
     }
   },
+
+  "meta": {
+    "title": "Dániel Szegedi — Fullstack Developer",
+    "description": "Fullstack developer building modern web applications, scalable backend systems, and custom digital solutions using TypeScript, React, and Node.js.",
+    "keywords": "fullstack developer, typescript developer, react developer, node.js developer, backend developer, web application development, api development, modern web development",
+    "ogTitle": "Dániel Szegedi — Fullstack Developer Portfolio",
+    "ogDescription": "Custom-built systems, modern web applications, and scalable backend solutions powered by TypeScript, React, and Node.js."
+  },
+
+  "nav": {
+    "logoName": "Dániel Szegedi",
+    "links": {
+      "about": "About",
+      "skills": "Skills",
+      "projects": "Projects",
+      "timeline": "Experience",
+      "services": "Services",
+      "contact": "Contact"
+    },
+    "ctaButton": "Let's work together",
+    "menuAriaLabel": "Menu"
+  },
+
+  "hero": {
+    "badge": "Available for new projects",
+    "titlePrefix": "Dániel Szegedi —",
+    "titleHighlight": "Fullstack Developer",
+    "description": "I build complete digital systems from the initial idea to a fully working product. Modern frontends, reliable backends, and carefully designed architectures — all in one place.",
+    "primaryButton": "View my projects",
+    "secondaryButton": "Get in touch"
+  },
+
+  "about": {
+    "eyebrow": "About me",
+    "title": "Turning ideas into powerful systems",
+    "description": "For me, development is not just about writing code. It is about solving problems and creating systems that provide long-term value.",
+
+    "paragraph1": "I have been developing software since 2017. What started as a hobby has grown into a passion for creating my own systems and solving complex technical challenges. I work across the entire development process — from frontend interfaces and backend architecture to databases and deployment.",
+
+    "paragraph2": "I enjoy building projects where complex problems require clean and reliable solutions. I focus on well-structured code, performance, and creating systems that are not only functional today but remain easy to maintain and expand in the future.",
+
+    "tags": {
+      "cleanCode": "Clean Code",
+      "performance": "Performance",
+      "uxFocused": "User Experience",
+      "scalability": "Scalable Systems"
+    }
+  },
+
+  "skills": {
+    "eyebrow": "Skills",
+    "title": "Modern technologies with a fullstack mindset",
+    "description": "From planning to implementation, I use my full development experience to create modern, reliable, and scalable applications.",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Database",
+      "devops": "DevOps",
+      "languages": "Programming Languages",
+      "tools": "Tools"
+    }
+  },
+
+  "projects": {
+    "eyebrow": "Featured projects",
+    "title": "Systems built entirely by me",
+    "description": "Personal projects that showcase my fullstack approach, architecture design skills, and problem-solving mindset.",
+    "codeLink": "Source code",
+    "demoLink": "Live version",
+
+    "items": {
+      "flutryApi": {
+        "title": "Flutry REST API",
+        "description": "Flutry is a custom backend system built entirely from scratch. The goal of this project was to create a stable, secure, and easily extendable architecture using modern TypeScript technologies. The system includes a structured API design, efficient data handling, authentication, and scalable solutions designed for real production environments.",
+        "tags": {
+          "customArchitecture": "Custom Architecture",
+          "scalableDesignPatterns": "Scalable Design Patterns",
+          "securityFocused": "Security-focused Development",
+          "optimizedPerformance": "Optimized Performance"
+        }
+      },
+
+      "portfolioSite": {
+        "title": "dev.otamoon.hu - Portfolio",
+        "description": "My personal portfolio website, built entirely with my own development solutions. It uses modern React Router V7 for optimized navigation, Tailwind CSS for a responsive design system, and a custom email service for contact forms. This project represents my full development skill set and commitment to writing high-quality software.",
+        "tags": {
+          "personalPortfolio": "Personal Portfolio & Presentation",
+          "reactRouterTailwind": "React Router V7 & Tailwind CSS",
+          "emailIntegration": "Custom Email Service Integration",
+          "multiLanguage": "Multi-language Support (HU/EN)"
+        }
+      }
+    }
+  },
+
+  "services": {
+    "eyebrow": "Services",
+    "title": "How I can help",
+    "description": "From the initial idea to the final product — complete development solutions in one place.",
+    "items": {
+      "websites": {
+        "title": "Websites",
+        "description": "Fast, SEO-friendly, and visually impressive websites designed to deliver results."
+      },
+      "dashboards": {
+        "title": "Dashboards",
+        "description": "Data-driven admin panels and analytics tools that make business operations easier to understand."
+      },
+      "apiDevelopment": {
+        "title": "API Development",
+        "description": "Scalable and documented REST or GraphQL APIs that provide a reliable foundation for your applications."
+      },
+      "backendSystems": {
+        "title": "Backend Systems",
+        "description": "Reliable server-side architectures designed to handle real-world workloads."
+      },
+      "fullstackDevelopment": {
+        "title": "Fullstack Development",
+        "description": "Complete development from concept to finished product, handling the entire process independently."
+      }
+    }
+  },
+
+  "techStack": {
+    "eyebrow": "Tech stack",
+    "title": "Technologies I work with every day"
+  },
+
   "contact": {
-    "title": "Let's Work Together",
-    "description": "I'm always interested in new projects and opportunities. Whether you have a question or just want to say hi, feel free to reach out.",
+    "eyebrow": "Contact",
+    "title": "Let's build something together",
+    "description": "Have an idea? Send me a message and I will get back to you within 24 hours.",
+    "links": {
+      "email": {
+        "label": "Email",
+        "value": "dev@otamoon.hu"
+      },
+      "github": {
+        "label": "GitHub",
+        "value": "github.com/hh3di"
+      }
+    },
+    "form": {
+      "nameLabel": "Name",
+      "namePlaceholder": "Your name",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@email.com",
+      "messageLabel": "Message",
+      "messagePlaceholder": "How can I help you?",
+      "submitButton": "Send message",
+      "submitButtonSent": "Sent!"
+    },
     "name": "Your Name",
     "email": "Your Email",
     "message": "Your Message",
@@ -116,32 +185,11 @@
     "sending": "Sending...",
     "messageSentSuccessfully": "Message sent successfully! I'll get back to you soon.",
     "messageSendError": "Failed to send message. Please try again.",
-    "newMessage": "New Message",
-    "emailSubject": "Contact Form Message",
-    "emailSentAt": "Sent at",
-    "fromWebsite": "From website",
-    "charactersLeft": "characters remaining",
-    "required": "This field is required",
-    "error": {
-      "name": {
-        "required": "This field is required",
-        "minLength": "Please enter at least 2 characters",
-        "maxLength": "Maximum 100 characters allowed"
-      },
-      "email": {
-        "required": "This field is required",
-        "emailInvalid": "Please enter a valid email address",
-        "maxLength": "Maximum 255 characters allowed"
-      },
-      "message": {
-        "required": "This field is required",
-        "minLength": "Please enter at least 10 characters",
-        "maxLength": "Maximum 2000 characters allowed"
-      }
-    }
+    "newMessage": "New Message"
   },
+
   "footer": {
-    "rights": "All rights reserved.",
-    "built": "Built with React, TypeScript, and Tailwind CSS"
+    "logoName": "Dani Szegedi",
+    "copyright": "Dániel Szegedi. All rights reserved."
   }
 }

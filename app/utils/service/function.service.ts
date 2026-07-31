@@ -44,3 +44,14 @@ export function blockUserInteraction() {
     });
   };
 }
+
+export const hasChanges = <T extends object>(
+  source: T,
+  compareMap: {
+    [K in keyof T]?: unknown;
+  },
+) => {
+  return (Object.keys(compareMap) as (keyof T)[]).some((key) => {
+    return JSON.stringify(source[key]) !== JSON.stringify(compareMap[key]);
+  });
+};

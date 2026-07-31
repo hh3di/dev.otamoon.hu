@@ -23,17 +23,17 @@ class RedisService {
   private isEnabled: boolean = false;
 
   constructor() {
-    if (import.meta.env.VITE_REDIS_HOST !== 'your-redis-host') {
+    if (process.env.REDIS_HOST !== 'your-redis-host') {
       this.connect();
     }
   }
   private async connect(): Promise<void> {
     try {
-      const redisHost = import.meta.env.VITE_REDIS_HOST;
-      const redisPort = parseInt(import.meta.env.VITE_REDIS_PORT || '6379');
-      const redisPassword = import.meta.env.VITE_REDIS_PASSWORD;
-      const redisCluster = import.meta.env.VITE_REDIS_CLUSTER === 'true';
-      const redisClusterNodes = import.meta.env.VITE_REDIS_CLUSTER_NODES;
+      const redisHost = process.env.REDIS_HOST;
+      const redisPort = parseInt(process.env.REDIS_PORT || '6379');
+      const redisPassword = process.env.REDIS_PASSWORD;
+      const redisCluster = process.env.REDIS_CLUSTER === 'true';
+      const redisClusterNodes = process.env.REDIS_CLUSTER_NODES;
       if (!redisHost || redisHost === undefined || redisHost.trim() === '') {
         this.isEnabled = false;
         this.client = null;
@@ -77,7 +77,7 @@ class RedisService {
           host: redisHost,
           port: redisPort,
           password: redisPassword,
-          db: parseInt(import.meta.env.VITE_REDIS_DB || '0'),
+          db: parseInt(process.env.REDIS_DB || '0'),
           lazyConnect: true,
           retryDelayOnFailover: 100,
           enableReadyCheck: false,
@@ -125,7 +125,7 @@ class RedisService {
       if (!this.canUseRedis()) {
         return null;
       }
-      const result = await this.client!.get(`${import.meta.env.VITE_REDIS_PREFIX || ''}${key}`);
+      const result = await this.client!.get(`${process.env.REDIS_PREFIX || ''}${key}`);
       return result ? JSON.parse(result) : null;
     } catch (error) {
       console.error('❌ Redis GET error:', error);
@@ -140,9 +140,9 @@ class RedisService {
       }
       const jsonString = JSON.stringify(value);
       if (ttlSeconds) {
-        return await this.client!.set(`${import.meta.env.VITE_REDIS_PREFIX || ''}${key}`, jsonString, 'EX', ttlSeconds);
+        return await this.client!.set(`${process.env.REDIS_PREFIX || ''}${key}`, jsonString, 'EX', ttlSeconds);
       } else {
-        return await this.client!.set(`${import.meta.env.VITE_REDIS_PREFIX || ''}${key}`, jsonString);
+        return await this.client!.set(`${process.env.REDIS_PREFIX || ''}${key}`, jsonString);
       }
     } catch (error) {
       console.error('❌ Redis SET error:', error);
@@ -155,7 +155,7 @@ class RedisService {
       if (!this.canUseRedis()) {
         return 0;
       }
-      return await this.client!.del(`${import.meta.env.VITE_REDIS_PREFIX || ''}${key}`);
+      return await this.client!.del(`${process.env.REDIS_PREFIX || ''}${key}`);
     } catch (error) {
       console.error('❌ Redis DELETE error:', error);
       return 0;

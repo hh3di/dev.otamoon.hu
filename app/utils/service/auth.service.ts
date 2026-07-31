@@ -17,7 +17,7 @@ async function setCachedUser(
     device_id: string;
   },
 ) {
-  return redisService.set(getCacheKey(id), data, 30);
+  return redisService.set(getCacheKey(id), data, 60);
 }
 
 const getUser = async (token: string) => {
@@ -136,9 +136,10 @@ export const AuthLoader = async (request: Request, cookie?: string[]) => {
 
 export const getToken = async (access_token: string, refresh_token: string, dev_id: string) => {
   try {
+    console.log(1);
     const cached = await getCachedUser(dev_id);
-
-    if (cached && cached.user && typeof cached.user === 'object') {
+    if (cached && cached.user) {
+      console.log(2);
       return {
         user: cached.user,
         access_token: cached.access_token,
@@ -148,8 +149,9 @@ export const getToken = async (access_token: string, refresh_token: string, dev_
     }
 
     const userResponse = await getUser(access_token);
-
+    console.log(3);
     if (userResponse?.user) {
+      console.log(4);
       await setCachedUser(dev_id, {
         user: userResponse.user,
         access_token,
@@ -166,24 +168,26 @@ export const getToken = async (access_token: string, refresh_token: string, dev_
     }
 
     const refreshed = await refreshToken(refresh_token);
-
+    console.log(5);
     if (!refreshed?.access_token) {
+      console.log(6);
       return false;
     }
 
     const newUser = await getUser(refreshed.access_token);
-
+    console.log(7);
     if (!newUser?.user) {
+      console.log(8);
       return false;
     }
-
+    console.log(9);
     await setCachedUser(dev_id, {
       user: newUser.user,
       access_token: refreshed.access_token,
       refresh_token: refreshed.refresh_token,
       device_id: dev_id,
     });
-
+    console.log(10);
     return {
       user: newUser.user,
       access_token: refreshed.access_token,
@@ -191,6 +195,7 @@ export const getToken = async (access_token: string, refresh_token: string, dev_
       device_id: dev_id,
     };
   } catch (error) {
+    console.log(11);
     console.error('getToken:', error);
     return false;
   }

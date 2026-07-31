@@ -24,7 +24,7 @@ interface ApiResponse<T = any> {
 
 // Default configuration
 const DEFAULT_CONFIG: ApiConfig = {
-  baseURL: import.meta.env.VITE_API_HOST as string,
+  baseURL: process.env.API_HOST as string,
   retries: 1,
 };
 
