@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { createCookieSessionStorage, data, redirect } from 'react-router';
 
 // FONTOS: soha ne használj VITE_ prefixet titkos kulcsokhoz — a Vite az ilyen

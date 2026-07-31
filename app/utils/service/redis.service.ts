@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import Redis, { Cluster } from 'ioredis';
 
 interface RedisConfig {
